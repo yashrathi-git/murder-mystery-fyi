@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/quiz.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <form method="post" class="quiz-form">
+    <h2>Quiz</h2>
+
+    {% if error %}
+    <div class="error-message">{{ error }}</div>
+    {% endif %}
+
+    <div class="form-group">
+      <label for="question">Question:</label>
+      <p id="question">{{ question }}</p>
+    </div>
+
+    <div class="form-group">
+      <label>Choices:</label>
+      {% for choice in choices %}
+      {% if marked_resp == choice %}
+      <div class="radio {% if is_correct_answer %}correct{% endif %}{% if not is_correct_answer %}wrong{% endif %}">
+        <label>
+          <input type="radio" name="choice" value="{{ choice }}" checked>
+          {{ choice }}
+        </label>
+      </div>
+      {% else %}
+      <div class="radio">
+        <label>
+          <input type="radio" name="choice" value="{{ choice }}">
+          {{ choice }}
+        </label>
+      </div>
+      {%endif%}
+      {% endfor %}
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+{% endblock %}

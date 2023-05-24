@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "murder_mystery"
+version = "0.1.0"
+description = ""
+authors = ["Yash Rathi <yashrathicricket@gmail.com>"]
+readme = "README.md"
+packages = [{include = "fyi_project_website"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+flask = "^2.3.2"
+flask-pymongo = "^2.3.0"
+flask-login = "^0.6.2"
+
+
+[tool.poetry.group.dev.dependencies]
+rich = "^13.3.5"
+black = "^23.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
